@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package entities;
+package model;
 
 /**
  *
@@ -20,13 +20,13 @@ public class DataService {
     }
 
     public void loadAllData() {
-        loadPatients("data/patients.csv");
-        loadClinicians("data/clinicians.csv");
-        loadFacilities("data/facilities.csv");
-        loadAppointments("data/appointments.csv");
-        loadPrescriptions("data/prescriptions.csv");
-        loadReferrals("data/referrals.csv");
-        loadStaff("data/staff.csv");
+        loadPatients("patients.csv");
+        loadClinicians("clinicians.csv");
+        loadFacilities("facilities.csv");
+        loadAppointments("appointments.csv");
+        loadPrescriptions("prescriptions.csv");
+        loadReferrals("referrals.csv");
+        loadStaff("staff.csv");
         System.out.println("All data loaded successfully!");
     }
 
@@ -43,8 +43,7 @@ public class DataService {
                 if (data.length >= 14) {
                     Patient patient = new Patient(
                         data[0], data[1], data[2], data[3], data[4], data[5],
-                        data[6], data[7], data[8], data[9], data[10], data[11],
-                        data[12], data[13]
+                        data[6], data[7], data[8] 
                     );
                     repository.addPatient(patient);
                 }
@@ -153,30 +152,31 @@ public class DataService {
     }
 
     private void loadReferrals(String filePath) {
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            boolean firstLine = true;
-            while ((line = br.readLine()) != null) {
-                if (firstLine) {
-                    firstLine = false;
-                    continue;
-                }
-                String[] data = parseCSVLine(line);
-                if (data.length >= 17) {
-                    Referral referral = Referral.createReferral(
-                        data[0], data[1], data[2], data[3], data[4], data[5],
-                        data[6], data[7], data[8], data[9], data[10], data[11],
-                        data[12], data[13], data[14], data[15], data[16]
-                    );
+    try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+        String line;
+        boolean firstLine = true;
+        int count = 0;
+        
+        while ((line = br.readLine()) != null) {
+            if (firstLine) {
+                firstLine = false;
+                continue;
+            }
+            
+            String[] data = parseCSVLine(line);
+            if (data.length >= 16) {
+                Referral referral = Referral.createFromCSV(data);
+                if (referral != null) {
                     repository.addReferral(referral);
+                    count++;
                 }
             }
-            System.out.println("Loaded " + repository.getAllReferrals().size() + " referrals");
-        } catch (IOException e) {
-            System.err.println("Error loading referrals: " + e.getMessage());
         }
+        System.out.println("✓ Loaded " + count + " referrals from " + filePath);
+    } catch (IOException e) {
+        System.err.println("✗ Error loading referrals: " + e.getMessage());
     }
-
+}
     private void loadStaff(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;

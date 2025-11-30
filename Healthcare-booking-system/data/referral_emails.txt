@@ -1,0 +1,48 @@
+EMAIL NOTIFICATION - NEW REFERRAL
+=================================
+From: Referral Management System
+To: Specialist Department
+Subject: New Urgent Referral - R5879
+
+Dear Specialist Team,
+
+A new urgent referral has been received with the following details:
+
+Referral ID: R5879
+Patient ID: fvsdfg
+Referring Clinician: sdfsdf
+Urgency: Urgent
+Clinical Summary: fasdf
+Requested Investigations: fasdfasdfg
+
+Please review this referral within the system and schedule an appointment.
+
+Kind regards,
+Referral Management System
+Date: 2025-11-24
+
+
+EMAIL NOTIFICATION - NEW REFERRAL
+=================================
+From: Referral Management System
+To: Specialist Department
+Subject: New Urgent Referral - R010
+
+Dear Specialist Team,
+
+A new urgent referral has been received with the following details:
+
+Referral ID: R010
+Patient ID: P006
+Referring Clinician: C004
+Urgency: Urgent
+Clinical Summary: 47-year-old female reporting significant memory issues and confusion. Family concerned about early onset dementia.
+Requested Investigations: Cognitive assessment|MRI Brain
+
+Please review this referral within the system and schedule an appointment.
+
+Kind regards,
+Referral Management System
+Date: 2025-11-24
+
+

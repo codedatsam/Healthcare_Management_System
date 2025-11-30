@@ -7,7 +7,7 @@
  *
  * @author lekan
  */
-package entities;
+package model;
 
 public class Prescription {
     private String prescriptionId;
@@ -81,28 +81,41 @@ public class Prescription {
     public void setCollectionDate(String collectionDate) { this.collectionDate = collectionDate; }
 
     public String generatePrescriptionContent() {
-        return String.format(
-            "PRESCRIPTION RECORD\n" +
-            "===================\n" +
-            "Prescription ID: %s\n" +
-            "Patient ID: %s\n" +
-            "Clinician ID: %s\n" +
-            "Appointment ID: %s\n" +
-            "Prescription Date: %s\n" +
-            "Medication: %s\n" +
-            "Dosage: %s\n" +
-            "Frequency: %s\n" +
-            "Duration: %s days\n" +
-            "Quantity: %s\n" +
-            "Instructions: %s\n" +
-            "Pharmacy: %s\n" +
-            "Status: %s\n" +
-            "Issue Date: %s\n" +
-            "Collection Date: %s\n" +
-            "--- END OF PRESCRIPTION ---\n\n",
-            prescriptionId, patientId, clinicianId, appointmentId, prescriptionDate,
-            medicationName, dosage, frequency, durationDays, quantity, instructions,
-            pharmacyName, status, issueDate, collectionDate
-        );
+    return String.format(
+        "PRESCRIPTION RECORD\n" +
+        "===================\n" +
+        "Prescription ID: %s\n" +
+        "Patient ID: %s\n" +
+        "Clinician ID: %s\n" +
+        "Appointment ID: %s\n" +
+        "Prescription Date: %s\n" +
+        "Medication: %s\n" +
+        "Dosage: %s\n" +
+        "Frequency: %s\n" +
+        "Duration: %s days\n" +
+        "Quantity: %s\n" +
+        "Instructions: %s\n" +
+        "Pharmacy: %s\n" +
+        "Status: %s\n" +
+        "Issue Date: %s\n" +
+        "Collection Date: %s\n" +
+        "--- END OF PRESCRIPTION ---\n\n",
+        getPrescriptionId(),
+        getPatientId(),
+        getClinicianId(),
+        getAppointmentId() != null ? getAppointmentId() : "N/A",
+        getPrescriptionDate(),
+        getMedicationName(),
+        getDosage(),
+        getFrequency(),
+        getDurationDays(),
+        getQuantity(),
+        getInstructions(),
+        getPharmacyName(),
+        getStatus(),
+        getIssueDate() != null ? getIssueDate() : "N/A",
+        getCollectionDate() != null ? getCollectionDate() : "Not collected"
+    );
+
     }
 }
